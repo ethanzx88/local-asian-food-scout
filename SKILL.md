@@ -35,18 +35,20 @@ Run **3–5 parallel `WebSearch`** calls. Use `site:` operators. Pick from this 
 
 | Source | Use when | Query pattern |
 |---|---|---|
-| `site:reddit.com/r/sgv` | LA / SGV queries | `<cuisine> r/sgv` |
-| `site:reddit.com/r/FoodNYC` | NYC queries | `<cuisine> r/FoodNYC` |
-| `site:reddit.com/r/AskSF` | SF / Bay Area | `<cuisine> r/AskSF` |
-| `site:reddit.com/r/AsianEats` | any city | `<cuisine> r/AsianEats authentic` |
-| `site:reddit.com` + native-language keyword | always (gold signal) | `麻辣 OR 川味 <city>` / `粤菜 <city>` / `<dish-in-native-script> <city>` |
-| `site:theinfatuation.com` | major US cities | `<cuisine> <city>` |
+| `site:theinfatuation.com` | major US cities | `<cuisine> <city>` — **highest yield single source, always include** |
 | `site:eater.com` | major US cities | `<cuisine> <city> map` |
 | `site:tabelog.com` | Japan queries only | `<dish/cuisine> <city>` |
 | `site:guide.michelin.com` | high-tier ask | `<cuisine> <city>` |
-| Plain `WebSearch` | always (catch the long tail) | `authentic <regional cuisine> <city> reviews 2025` |
+| `site:starved.io` | NYC / aggregated Reddit signal | `<restaurant or cuisine> <city>` |
+| Native-language plain search | always (gold signal) | `<cuisine 中文/日文/etc.> <city 中文> 推荐 正宗` |
+| Plain `WebSearch` | always (catch the long tail) | `authentic <regional cuisine> <city> reviews <current year>` |
+| Yelp / Tripadvisor specific listing lookup | for verifying a candidate already found | `<restaurant name> <city> review` |
 
-**If WebSearch results are thin**, follow up with `WebFetch` on 1–2 most promising URLs (Infatuation guide, top Reddit thread). Don't fetch more than 2 — eats time.
+**⚠️ Known unreliable sources (verified across multiple runs — skip these to save a slot):**
+- **`site:reddit.com/r/<subreddit>` searches** — Reddit's 2024 robots.txt change means Google no longer indexes most subreddit threads (r/AskSF, r/FoodNYC, r/AsianEats, r/sgv). These return 0 results consistently. If you want Reddit signal, use `site:starved.io` (third-party Reddit aggregator), or include "reddit" as a plain keyword in a non-`site:` search.
+- **`chihuo.com` (吃货小分队)** — Frequently `ECONNREFUSED` on `WebFetch`. Don't pick it as one of your 2 fetch targets. If you need a 中文 source, prefer: `dealmoon.com`, `sohu.com` (often mirrors chihuo content), `castudents.org`, `xuvce.com`, or 知乎 (`zhuanlan.zhihu.com`).
+
+**If WebSearch results are thin**, follow up with `WebFetch` on 1–2 most promising URLs (Infatuation guide, dim sum / 老字号 guide, top non-Reddit thread). Don't fetch more than 2 — eats time. **Highest historical yield: Infatuation "best [cuisine] in [city]" or "old-school [cuisine] in [city]" guides.**
 
 ### Step 3 — Mine the evidence for authenticity signals
 
