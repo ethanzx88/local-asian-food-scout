@@ -80,7 +80,7 @@ NY 川菜 institution. The Infatuation 原话: *"refuses broad fusion trends and
 - ✅ "do not play around with spice" / "first-timer-friendly" 取反 (后者拉低 score)
 - ✅ 多源交叉验证 (≥2 source 才进榜)
 
-**⚠️ Methodology caveat:** Reddit 的 robots.txt 在 2024 年改了, 现在 Google index 抓不到 r/FoodNYC, r/AsianEats 这些子版的内容, 所以我们 surface 的 Reddit signal 主要靠第三方 aggregator (如 Starved.io). 想要更深的社区信号, 直接去 reddit.com 站内搜.
+**⚠️ Methodology caveat:** Reddit 的 robots.txt 在 2024 年改了, 现在 Google index 抓不到 r/FoodNYC, r/AsianEats, r/AskSF, r/sgv 这些子版的内容, `site:reddit.com/r/<sub>` 搜索基本 0 result. 已经在 SKILL.md 里把 Reddit `site:` 搜索从 menu 移除. 替代源: starved.io 第三方 aggregator, 或者直接 reddit.com 站内搜.
 
 ---
 
